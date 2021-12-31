@@ -1,4 +1,4 @@
-baseurl: https://moozae.com
+baseurl: https://blog.moozae.cn
 languageCode: zh-cn
 theme: hugo-theme-stack
 paginate: 5

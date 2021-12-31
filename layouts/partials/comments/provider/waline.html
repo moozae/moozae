@@ -1,0 +1,56 @@
+<script src='//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js'></script>
+<div id="waline" class="waline-container"></div>
+<style>
+    .vcomment, .vcard {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+    .waline-container .vcount {
+        color: var(--card-text-color-main);
+    }
+</style>
+
+<style>
+    darkmode-selector {
+  /* 常规颜色 */
+  --waline-white: #000;
+  --waline-light-grey: #666;
+  --waline-dark-grey: #999;
+
+  /* 布局颜色 */
+  --waline-text-color: #888;
+  --waline-bgcolor: #1e1e1e;
+  --waline-bgcolor-light: #272727;
+  --waline-border-color: #333;
+  --waline-disable-bgcolor: #444;
+  --waline-disable-color: #272727;
+
+  /* 特殊颜色 */
+  --waline-bq-color: #272727;
+
+  /* 其他颜色 */
+  --waline-info-bgcolor: #272727;
+  --waline-info-color: #666;
+}
+</style>
+
+{{- with .Site.Params.comments.waline -}}
+{{- $config := dict "el" "#waline" "dark" `html[data-scheme="dark"]` -}}
+{{- $replaceKeys := dict "serverurl" "serverURL" "requiredmeta" "requiredMeta" "wordlimit" "wordLimit" "pagesize" "pageSize" "avatarcdn" "avatarCDN" "avatarforce" "avatarForce" -}}
+
+{{- range $key, $val := . -}}
+    {{- if $val -}}  
+        {{- $replaceKey := index $replaceKeys $key -}}
+        {{- $k := default $key $replaceKey -}}
+
+        {{- $config = merge $config (dict $k $val) -}}
+    {{- end -}}
+{{- end -}}
+
+<script>
+    /// Waline client configuration see: https://waline.js.org/en/reference/client.html
+    new Waline({{ $config | jsonify | safeJS }});
+</script>
+{{- end -}}

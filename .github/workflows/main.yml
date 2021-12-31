@@ -1,0 +1,38 @@
+name: deploy blog
+
+on:
+  push:
+  schedule:
+    - cron: '30 20 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+    - uses: srt32/git-actions@v0.0.3
+      with:
+        args: git submodule update --init --recursive
+    - name: use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+    - name: npm i Hugo
+      uses: peaceiris/actions-hugo@v2
+    - name: Build
+      run: |
+        hugo --minify
+
+     #hugo --minify到ubuntu-latest是部署Hugo的，不用可以去掉
+
+    - name: setup aliyun oss
+      uses: manyuanrong/setup-ossutil@master
+      with:
+        endpoint: oss-cn-hongkong.aliyuncs.com #修改为自己的Endpoint
+        access-key-id: ${{ secrets.OSS_KEY_ID }}
+        access-key-secret: ${{ secrets.OSS_KEY_SECRET }}
+    - name: cp aliyun oss
+      run: ossutil cp -rf public oss://moozae-blog/ #修改为自己的

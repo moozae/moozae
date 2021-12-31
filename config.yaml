@@ -18,10 +18,6 @@ DefaultContentLanguage: zh-cn
 # This will make .Summary and .WordCount behave correctly for CJK languages.
 hasCJKLanguage: true
 
-frontmatter:
-    lastmod: [":git", "lastmod"]
-
-
 permalinks:
     post: /p/:slug/
     page: /:slug/

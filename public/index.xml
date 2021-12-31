@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>是沐子的小窝哩</title>
+        <link>https://blog.moozae.cn/</link>
+        <description>Recent content on 是沐子的小窝哩</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Fri, 31 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.moozae.cn/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Windows下使用VSCode搭建LVGL模拟器环境</title>
+        <link>https://blog.moozae.cn/p/lv-sim-vscode-windows/</link>
+        <pubDate>Fri, 31 Dec 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.moozae.cn/p/lv-sim-vscode-windows/</guid>
+        <description>&lt;img src="https://blog.moozae.cn/p/lv-sim-vscode-windows/qwq.png" alt="Featured image of post Windows下使用VSCode搭建LVGL模拟器环境" /&gt;&lt;blockquote&gt;
+&lt;p&gt;前排提示：本文含有大量的废话，可以选择跳过从“说干咱们就干”小节开始看起&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
+&lt;p&gt;最近在搞点小玩意，需要搞个嵌入式UI，本来计划掏出用的N久的qt for nuc来着，但是刷b站的时候偶然间发现了LVGL这个玩意 &lt;del&gt;（b站害我）&lt;/del&gt; ，就想着要不找个新项目就用LVGL来写吧&lt;/p&gt;
+&lt;h2 id=&#34;发生了啥&#34;&gt;发生了啥？&lt;/h2&gt;
+&lt;p&gt;LVGL很贴心的提供了模拟器，免去了交叉编译下载到硬件的步骤，这样我就可以很方便的来设计UI，但是……&lt;/p&gt;
+&lt;p&gt;由于我在学校没法用自己的电脑，并且学校的电脑只有Windows……&lt;/p&gt;
+&lt;p&gt;虽然LVGL提供了windows的模拟器，然而只给了codeblocks和visual studio的环境，我却是个vscode无脑党……&lt;/p&gt;
+&lt;h2 id=&#34;然后呢&#34;&gt;然后呢？&lt;/h2&gt;
+&lt;p&gt;然后我就开始在网上搜有没有解决方案，最终在搜遍了整个google没有找到可行的解决方案，在gitee找到了一个三方的项目（https://gitee.com/t01051/lvgl-windows-sim-vscode）可以运行但是有些小问题……&lt;/p&gt;
+&lt;p&gt;于是我差点放弃了vscode转去安装vs……&lt;/p&gt;
+&lt;p&gt;直到我打开了vs的安装界面。。。&lt;/p&gt;
+&lt;p&gt;王德发？？？居然要4G，杀了我吧！&lt;/p&gt;
+&lt;p&gt;那就试试codeblocks？&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;算了oi时期的噩梦&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;是不是玩不起&#34;&gt;是不是玩不起？&lt;/h2&gt;
+&lt;p&gt;好吧我承认我确实有点放弃&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;但是&lt;/code&gt; windows不是号称 &lt;del&gt;最棒的linux发行版&lt;/del&gt; 吗？&lt;/p&gt;
+&lt;p&gt;对了，wsl！&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;然后我兴冲冲的安装了x11 server&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;等等！好像麻烦了！&lt;/p&gt;
+&lt;p&gt;wsl2有&lt;a class=&#34;link&#34; href=&#34;https://github.com/microsoft/wslg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;wslg&lt;/a&gt;啊！&lt;/p&gt;
+&lt;h2 id=&#34;说干咱们就干&#34;&gt;说干咱们就干！&lt;/h2&gt;
+&lt;p&gt;安装vscode和wsl的废话这里不再赘述&lt;/p&gt;
+&lt;p&gt;至于wslg，可以参考&lt;a class=&#34;link&#34; href=&#34;https://github.com/microsoft/wslg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文档&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这里建议先安装下GIMP测试下，顺便利用apt安装GIMP的过程补全各种依赖&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 177; 
+			flex-basis: 426px&#34;
+	&gt;
+	&lt;a href=&#34;https://blog.moozae.cn/p/lv-sim-vscode-windows/gimp.png&#34; data-size=&#34;1920x1080&#34;&gt;
+		&lt;img src=&#34;https://blog.moozae.cn/p/lv-sim-vscode-windows/gimp.png&#34;
+			width=&#34;1920&#34;
+			height=&#34;1080&#34;
+			srcset=&#34;https://blog.moozae.cn/p/lv-sim-vscode-windows/gimp_hu226d7506be6846f971ed6f2753350bd5_626166_480x0_resize_box_3.png 480w, https://blog.moozae.cn/p/lv-sim-vscode-windows/gimp_hu226d7506be6846f971ed6f2753350bd5_626166_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;WSLG走起！&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;WSLG走起！&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后咱们开工！&lt;/p&gt;
+&lt;p&gt;由于我这里使用的是ubuntu2004环境，所以我用此环境做为演示，其他系统环境大同小异&lt;/p&gt;
+&lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://github.com/lvgl/lv_sim_vscode_sdl&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;lv_sim_vscode_sdl&lt;/a&gt;的官方文档，先把依赖补全&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt-get install -y build-essential libsdl2-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意wsl的ubuntu默认不带gcc和make，所以你需要apt安装一下&lt;/p&gt;
+&lt;p&gt;打开vscode，安装Remote-WSL插件
+&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 177; 
+			flex-basis: 426px&#34;
+	&gt;
+	&lt;a href=&#34;https://blog.moozae.cn/p/lv-sim-vscode-windows/vsc.png&#34; data-size=&#34;1920x1080&#34;&gt;
+		&lt;img src=&#34;https://blog.moozae.cn/p/lv-sim-vscode-windows/vsc.png&#34;
+			width=&#34;1920&#34;
+			height=&#34;1080&#34;
+			srcset=&#34;https://blog.moozae.cn/p/lv-sim-vscode-windows/vsc_huce457ee37fe00656ca5eb17f9272d4ec_312116_480x0_resize_box_3.png 480w, https://blog.moozae.cn/p/lv-sim-vscode-windows/vsc_huce457ee37fe00656ca5eb17f9272d4ec_312116_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;安装Remote-WSL插件&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;安装Remote-WSL插件&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;将lv_sim_vscode_sdl克隆到你想要的地方，注意该项目引用了子模块，不要忘记克隆子模块，不然模拟器将无法运行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone --recursive https://github.com/lvgl/lv_sim_vscode_sdl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;用vsc打开文件夹，点击vsc左下角的蓝色按钮，在上方弹出的选项框中选择 &lt;code&gt;Reopen Folder in WSL…&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;根据右下角提示在wsl里安装&amp;rsquo;C/C++&#39; &amp;lsquo;C/C++ Extension Pack&amp;rsquo; &amp;lsquo;CMake&amp;rsquo; &amp;lsquo;CMake Tools&amp;rsquo;四个拓展&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 133; 
+			flex-basis: 320px&#34;
+	&gt;
+	&lt;a href=&#34;https://blog.moozae.cn/p/lv-sim-vscode-windows/wsl.png&#34; data-size=&#34;1024x768&#34;&gt;
+		&lt;img src=&#34;https://blog.moozae.cn/p/lv-sim-vscode-windows/wsl.png&#34;
+			width=&#34;1024&#34;
+			height=&#34;768&#34;
+			srcset=&#34;https://blog.moozae.cn/p/lv-sim-vscode-windows/wsl_hua95802663eb28a0a143a5adff2d5e09d_173518_480x0_resize_box_3.png 480w, https://blog.moozae.cn/p/lv-sim-vscode-windows/wsl_hua95802663eb28a0a143a5adff2d5e09d_173518_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;记得是wsl里，我被坑了好长时间才找到锅23333&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;记得是wsl里，我被坑了好长时间才找到锅23333&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;打开文件夹包含的工作区&lt;/p&gt;
+&lt;p&gt;打开 &lt;code&gt;main/src/main.c&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;点击F5试试效果吧，不出意外就可以工作了~
+&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 177; 
+			flex-basis: 426px&#34;
+	&gt;
+	&lt;a href=&#34;https://blog.moozae.cn/p/lv-sim-vscode-windows/done.png&#34; data-size=&#34;1920x1080&#34;&gt;
+		&lt;img src=&#34;https://blog.moozae.cn/p/lv-sim-vscode-windows/done.png&#34;
+			width=&#34;1920&#34;
+			height=&#34;1080&#34;
+			srcset=&#34;https://blog.moozae.cn/p/lv-sim-vscode-windows/done_hu0ad9867d593c58fb676977362abeb7f7_358433_480x0_resize_box_3.png 480w, https://blog.moozae.cn/p/lv-sim-vscode-windows/done_hu0ad9867d593c58fb676977362abeb7f7_358433_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;附一张效果图&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;附一张效果图&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Hello,world!</title>
+        <link>https://blog.moozae.cn/p/helloworld/</link>
+        <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.moozae.cn/p/helloworld/</guid>
+        <description>&lt;img src="https://blog.moozae.cn/p/helloworld/qwq.jpg" alt="Featured image of post Hello,world!" /&gt;&lt;p&gt;哟👋~这里是沐子(Moozae)哩，从今天起就正式跟大家见面了~&lt;/p&gt;
+&lt;p&gt;//先来·音乐x&lt;/p&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css&#34;&gt;
+&lt;style type=&#34;text/css&#34;&gt;.dark-theme .aplayer{background:#212121}.dark-theme .aplayer.aplayer-withlist .aplayer-info{border-bottom-color:#5c5c5c}.dark-theme .aplayer.aplayer-fixed .aplayer-list{border-color:#5c5c5c}.dark-theme .aplayer .aplayer-body{background-color:#212121}.dark-theme .aplayer .aplayer-info{border-top-color:#212121}.dark-theme .aplayer .aplayer-info .aplayer-music .aplayer-title{color:#fff}.dark-theme .aplayer .aplayer-info .aplayer-music .aplayer-author{color:#fff}.dark-theme .aplayer .aplayer-info .aplayer-controller .aplayer-time{color:#eee}.dark-theme .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path{fill:#eee}.dark-theme .aplayer .aplayer-list{background-color:#212121}.dark-theme .aplayer .aplayer-list::-webkit-scrollbar-thumb{background-color:#999}.dark-theme .aplayer .aplayer-list::-webkit-scrollbar-thumb:hover{background-color:#bbb}.dark-theme .aplayer .aplayer-list li{color:#fff;border-top-color:#666}.dark-theme .aplayer .aplayer-list li:hover{background:#4e4e4e}.dark-theme .aplayer .aplayer-list li.aplayer-list-light{background:#6c6c6c}.dark-theme .aplayer .aplayer-list li .aplayer-list-index{color:#ddd}.dark-theme .aplayer .aplayer-list li .aplayer-list-author{color:#ddd}.dark-theme .aplayer .aplayer-lrc{text-shadow:-1px -1px 0 #666}.dark-theme .aplayer .aplayer-lrc:before{background:-moz-linear-gradient(top, #212121 0%, rgba(33,33,33,0) 100%);background:-webkit-linear-gradient(top, #212121 0%, rgba(33,33,33,0) 100%);background:linear-gradient(to bottom, #212121 0%, rgba(33,33,33,0) 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr=&#39;#212121&#39;, endColorstr=&#39;#00212121&#39;,GradientType=0 )}.dark-theme .aplayer .aplayer-lrc:after{background:-moz-linear-gradient(top, rgba(33,33,33,0) 0%, rgba(33,33,33,0.8) 100%);background:-webkit-linear-gradient(top, rgba(33,33,33,0) 0%, rgba(33,33,33,0.8) 100%);background:linear-gradient(to bottom, rgba(33,33,33,0) 0%, rgba(33,33,33,0.8) 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr=&#39;#00212121&#39;, endColorstr=&#39;#cc212121&#39;,GradientType=0 )}.dark-theme .aplayer .aplayer-lrc p{color:#fff}.dark-theme .aplayer .aplayer-miniswitcher{background:#484848}.dark-theme .aplayer .aplayer-miniswitcher .aplayer-icon path{fill:#eee}&lt;/style&gt;
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js&#34;&gt;&lt;/script&gt;
+
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js&#34;&gt;&lt;/script&gt;&lt;meting-js server=&#34;netease&#34; type=&#34;song&#34; id=&#34;1831396978&#34; theme=&#34;#2980b9&#34;&gt;&lt;/meting-js&gt;
+&lt;h2 id=&#34;沐子是什么玩意&#34;&gt;沐子是什么玩意？&lt;/h2&gt;
+&lt;p&gt;沐子是目前在&lt;del&gt;上高四&lt;/del&gt;🏫的苦逼复读高中党一枚qwq&lt;/p&gt;
+&lt;p&gt;是一只不可爱的女孩子🏳️‍⚧️（确信&lt;/p&gt;
+&lt;h2 id=&#34;沐子都喜欢啥啊&#34;&gt;沐子都喜欢啥啊？&lt;/h2&gt;
+&lt;p&gt;沐子喜欢各种毛茸茸的可爱爱的东西🥰！&lt;/p&gt;
+&lt;p&gt;比如沐子养的布偶猫🐱！&lt;/p&gt;
+&lt;p&gt;平时喜欢干的事情是做点奇奇怪怪的小硬件⚙️&lt;/p&gt;
+&lt;p&gt;比如……（好吧并没有什么能拿出手的东西qwq&lt;/p&gt;
+&lt;p&gt;arduino狂热爱好者（esp yyds）&lt;/p&gt;
+&lt;p&gt;惯用 PlatformIO + vs code 开发&lt;/p&gt;
+&lt;p&gt;疯狂的触控党，沐子有强迫症，有硬件的地方就要有屏，有屏的地方就要有触控&lt;/p&gt;
+&lt;p&gt;啊对，还是刷机狂，手头所有的安卓设备都被我&lt;del&gt;下过黑手&lt;/del&gt;（连电视都没放过的那种）&lt;/p&gt;
+&lt;p&gt;啊对了，沐子还喜欢小姐姐，&lt;del&gt;想百合🏳️‍🌈 （在线征婚ed）&lt;/del&gt; 现在已经有 &lt;del&gt;女朋友&lt;/del&gt; 老攻啦~&lt;/p&gt;
+&lt;h2 id=&#34;说这么多沐子好吃吗&#34;&gt;说这么多沐子好吃吗？&lt;/h2&gt;
+&lt;p&gt;大……大大……大概不好吃吧？&lt;/p&gt;
+&lt;p&gt;沐子肉肉的，全是肥肉，口感不会好的 &lt;del&gt;（npy：瞎说！软软的弹弹的滑滑的，口感像上等的奶油）&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;那……那沐子是条咸鱼，吃起来会很咸的！&lt;del&gt;（npy：我举报，这只Omega的信息素是甜的！）&lt;/del&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

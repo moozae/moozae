@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on 是沐子的小窝哩</title>
+    <link>https://blog.moozae.cn/categories/</link>
+    <description>Recent content in Categories on 是沐子的小窝哩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 31 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.moozae.cn/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LVGL</title>
+      <link>https://blog.moozae.cn/categories/lvgl/</link>
+      <pubDate>Fri, 31 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moozae.cn/categories/lvgl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vscode</title>
+      <link>https://blog.moozae.cn/categories/vscode/</link>
+      <pubDate>Fri, 31 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moozae.cn/categories/vscode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WSL</title>
+      <link>https://blog.moozae.cn/categories/wsl/</link>
+      <pubDate>Fri, 31 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moozae.cn/categories/wsl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>日常</title>
+      <link>https://blog.moozae.cn/categories/daily/</link>
+      <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moozae.cn/categories/daily/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

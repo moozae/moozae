@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='想玩LVGL，只喜欢vscode，但是官方vscode模拟器环境只支持linux/mac，于是我把目光盯向了WSL……'><title>Windows下使用VSCode搭建LVGL模拟器环境</title>
+
+<link rel='canonical' href='https://blog.moozae.cn/p/lv-sim-vscode-windows/'>
+
+<link rel="stylesheet" href="/scss/style.min.592f5a973801f1e02607d8463e23812659d43af8784e4a511887d8ae12198ca7.css"><meta property='og:title' content='Windows下使用VSCode搭建LVGL模拟器环境'>
+<meta property='og:description' content='想玩LVGL，只喜欢vscode，但是官方vscode模拟器环境只支持linux/mac，于是我把目光盯向了WSL……'>
+<meta property='og:url' content='https://blog.moozae.cn/p/lv-sim-vscode-windows/'>
+<meta property='og:site_name' content='是沐子的小窝哩'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-12-31T00:00:00&#43;00:00'/><meta property='og:image' content='https://blog.moozae.cn/p/lv-sim-vscode-windows/qwq.png' />
+<meta name="twitter:site" content="@Moozae629">
+    <meta name="twitter:creator" content="@Moozae629"><meta name="twitter:title" content="Windows下使用VSCode搭建LVGL模拟器环境">
+<meta name="twitter:description" content="想玩LVGL，只喜欢vscode，但是官方vscode模拟器环境只支持linux/mac，于是我把目光盯向了WSL……"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.moozae.cn/p/lv-sim-vscode-windows/qwq.png' />
+    <link rel="shortcut icon" href="/img/favicon.jpg" />
+<style>
+    :root {
+        --article-font-family: "Noto Serif SC", var(--base-font-family);
+    }
+</style>
+
+<script>
+		(function () {
+		    const customFont = document.createElement('link');
+		    customFont.href = "<https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap>";
+		
+		    customFont.type = "text/css";
+		    customFont.rel = "stylesheet";
+		
+		    document.head.appendChild(customFont);
+		}());
+</script>
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>返回</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/lv-sim-vscode-windows/">
+                <img src="/p/lv-sim-vscode-windows/qwq_hu0f0cd4e2ce4d12f0e6e6f8608b6d9810_514780_800x0_resize_box_3.png"
+                        srcset="/p/lv-sim-vscode-windows/qwq_hu0f0cd4e2ce4d12f0e6e6f8608b6d9810_514780_800x0_resize_box_3.png 800w, /p/lv-sim-vscode-windows/qwq_hu0f0cd4e2ce4d12f0e6e6f8608b6d9810_514780_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="341" 
+                        loading="lazy"
+                        alt="Featured image of post Windows下使用VSCode搭建LVGL模拟器环境" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/lvgl/" style="background-color: #fa1995; color: #fff;">
+                LVGL
+            </a>
+        
+            <a href="/categories/wsl/" style="background-color: #87cafa; color: #fff;">
+                WSL
+            </a>
+        
+            <a href="/categories/vscode/" style="background-color: #c887fa; color: #fff;">
+                vscode
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/lv-sim-vscode-windows/">Windows下使用VSCode搭建LVGL模拟器环境</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        想玩LVGL，只喜欢vscode，但是官方vscode模拟器环境只支持linux/mac，于是我把目光盯向了WSL……
+    </h3>
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 31, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <blockquote>
+<p>前排提示：本文含有大量的废话，可以选择跳过从“说干咱们就干”小节开始看起</p>
+</blockquote>
+<h2 id="背景">背景</h2>
+<p>最近在搞点小玩意，需要搞个嵌入式UI，本来计划掏出用的N久的qt for nuc来着，但是刷b站的时候偶然间发现了LVGL这个玩意 <del>（b站害我）</del> ，就想着要不找个新项目就用LVGL来写吧</p>
+<h2 id="发生了啥">发生了啥？</h2>
+<p>LVGL很贴心的提供了模拟器，免去了交叉编译下载到硬件的步骤，这样我就可以很方便的来设计UI，但是……</p>
+<p>由于我在学校没法用自己的电脑，并且学校的电脑只有Windows……</p>
+<p>虽然LVGL提供了windows的模拟器，然而只给了codeblocks和visual studio的环境，我却是个vscode无脑党……</p>
+<h2 id="然后呢">然后呢？</h2>
+<p>然后我就开始在网上搜有没有解决方案，最终在搜遍了整个google没有找到可行的解决方案，在gitee找到了一个三方的项目（https://gitee.com/t01051/lvgl-windows-sim-vscode）可以运行但是有些小问题……</p>
+<p>于是我差点放弃了vscode转去安装vs……</p>
+<p>直到我打开了vs的安装界面。。。</p>
+<p>王德发？？？居然要4G，杀了我吧！</p>
+<p>那就试试codeblocks？</p>
+<p><del>算了oi时期的噩梦</del></p>
+<h2 id="是不是玩不起">是不是玩不起？</h2>
+<p>好吧我承认我确实有点放弃</p>
+<p><code>但是</code> windows不是号称 <del>最棒的linux发行版</del> 吗？</p>
+<p>对了，wsl！</p>
+<p><del>然后我兴冲冲的安装了x11 server</del></p>
+<p>等等！好像麻烦了！</p>
+<p>wsl2有<a class="link" href="https://github.com/microsoft/wslg"  target="_blank" rel="noopener"
+    >wslg</a>啊！</p>
+<h2 id="说干咱们就干">说干咱们就干！</h2>
+<p>安装vscode和wsl的废话这里不再赘述</p>
+<p>至于wslg，可以参考<a class="link" href="https://github.com/microsoft/wslg"  target="_blank" rel="noopener"
+    >官方文档</a></p>
+<p>这里建议先安装下GIMP测试下，顺便利用apt安装GIMP的过程补全各种依赖</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 177; 
+			flex-basis: 426px"
+	>
+	<a href="/p/lv-sim-vscode-windows/gimp.png" data-size="1920x1080">
+		<img src="/p/lv-sim-vscode-windows/gimp.png"
+			width="1920"
+			height="1080"
+			srcset="/p/lv-sim-vscode-windows/gimp_hu226d7506be6846f971ed6f2753350bd5_626166_480x0_resize_box_3.png 480w, /p/lv-sim-vscode-windows/gimp_hu226d7506be6846f971ed6f2753350bd5_626166_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="WSLG走起！">
+	</a>
+	
+	<figcaption>WSLG走起！</figcaption>
+	
+</figure></p>
+<p>然后咱们开工！</p>
+<p>由于我这里使用的是ubuntu2004环境，所以我用此环境做为演示，其他系统环境大同小异</p>
+<p>参考<a class="link" href="https://github.com/lvgl/lv_sim_vscode_sdl"  target="_blank" rel="noopener"
+    >lv_sim_vscode_sdl</a>的官方文档，先把依赖补全</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install -y build-essential libsdl2-dev
+</code></pre></div><p>注意wsl的ubuntu默认不带gcc和make，所以你需要apt安装一下</p>
+<p>打开vscode，安装Remote-WSL插件
+<figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 177; 
+			flex-basis: 426px"
+	>
+	<a href="/p/lv-sim-vscode-windows/vsc.png" data-size="1920x1080">
+		<img src="/p/lv-sim-vscode-windows/vsc.png"
+			width="1920"
+			height="1080"
+			srcset="/p/lv-sim-vscode-windows/vsc_huce457ee37fe00656ca5eb17f9272d4ec_312116_480x0_resize_box_3.png 480w, /p/lv-sim-vscode-windows/vsc_huce457ee37fe00656ca5eb17f9272d4ec_312116_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="安装Remote-WSL插件">
+	</a>
+	
+	<figcaption>安装Remote-WSL插件</figcaption>
+	
+</figure></p>
+<p>将lv_sim_vscode_sdl克隆到你想要的地方，注意该项目引用了子模块，不要忘记克隆子模块，不然模拟器将无法运行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git clone --recursive https://github.com/lvgl/lv_sim_vscode_sdl
+</code></pre></div><p>用vsc打开文件夹，点击vsc左下角的蓝色按钮，在上方弹出的选项框中选择 <code>Reopen Folder in WSL…</code></p>
+<p>根据右下角提示在wsl里安装&rsquo;C/C++' &lsquo;C/C++ Extension Pack&rsquo; &lsquo;CMake&rsquo; &lsquo;CMake Tools&rsquo;四个拓展</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 133; 
+			flex-basis: 320px"
+	>
+	<a href="/p/lv-sim-vscode-windows/wsl.png" data-size="1024x768">
+		<img src="/p/lv-sim-vscode-windows/wsl.png"
+			width="1024"
+			height="768"
+			srcset="/p/lv-sim-vscode-windows/wsl_hua95802663eb28a0a143a5adff2d5e09d_173518_480x0_resize_box_3.png 480w, /p/lv-sim-vscode-windows/wsl_hua95802663eb28a0a143a5adff2d5e09d_173518_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="记得是wsl里，我被坑了好长时间才找到锅23333">
+	</a>
+	
+	<figcaption>记得是wsl里，我被坑了好长时间才找到锅23333</figcaption>
+	
+</figure></p>
+<p>打开文件夹包含的工作区</p>
+<p>打开 <code>main/src/main.c</code></p>
+<p>点击F5试试效果吧，不出意外就可以工作了~
+<figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 177; 
+			flex-basis: 426px"
+	>
+	<a href="/p/lv-sim-vscode-windows/done.png" data-size="1920x1080">
+		<img src="/p/lv-sim-vscode-windows/done.png"
+			width="1920"
+			height="1080"
+			srcset="/p/lv-sim-vscode-windows/done_hu0ad9867d593c58fb676977362abeb7f7_358433_480x0_resize_box_3.png 480w, /p/lv-sim-vscode-windows/done_hu0ad9867d593c58fb676977362abeb7f7_358433_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="附一张效果图">
+	</a>
+	
+	<figcaption>附一张效果图</figcaption>
+	
+</figure></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    
+
+    
+    <section class="article-edit">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-external-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5" />
+  <line x1="10" y1="14" x2="20" y2="4" />
+  <polyline points="15 4 20 4 20 9" />
+</svg>
+        <span><a style="color: inherit;" href="https://github.com/moozae/moozae/edit/develop/content/post/lv-sim-vscode-windows/index.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a></span>
+    </section>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Jan 01, 0001 00:00 UTC
+        </span>
+    </section></footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 是沐子的小窝哩
+    </section>
+    
+    <section class="powerby">
+        
+            <img style="width:20px;height:20px;margin-bottom:-8px" src="https://icp.gov.moe/images/ico64.png"><a href="https://icp.gov.moe/?keyword=20216029" target="_blank">萌ICP备20216029号</a> <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.6.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">目录</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#发生了啥">发生了啥？</a></li>
+    <li><a href="#然后呢">然后呢？</a></li>
+    <li><a href="#是不是玩不起">是不是玩不起？</a></li>
+    <li><a href="#说干咱们就干">说干咱们就干！</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/ribbon.js"></script>
+
+<script src="/js/nprogress.js"></script>
+<link rel="stylesheet" href="/css/nprogress.css"/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+    </body>
+</html>

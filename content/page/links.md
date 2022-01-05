@@ -8,7 +8,7 @@ menu:
         params: 
             icon: link
         weight: -50
-edit: false
+edit_url: "https://github.com/moozae/moozae/edit/develop/data/links.json"
 comment: true
 ---
 

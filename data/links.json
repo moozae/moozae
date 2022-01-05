@@ -1,14 +1,24 @@
 [
-	{
-    "title": "MTF WIKI",
-    "website": "https://mtf.wiki/",
-    "image": "apple-icon-144x144.png",
-		"description": "欢迎来到 MtF Wiki．我们试图整理汇总 MtF 的相关资料，为大家提供更好的帮助~"
-    },
-    {
-      "title": "凌莞(≧▽≦)喵～",
-      "website": "https://nyac.at/",
-      "image": "nyacat.png",
-      "description": "凌莞凌莞喵～凌莞猫强强x"
-    }
+  {
+      "name": "友友们",
+      "data": [
+          {
+              "title": "凌莞(≧▽≦)喵～",
+              "website": "https://nyac.at/",
+              "image": "nyacat.png",
+              "description": "凌莞凌莞喵～凌莞猫强强x"
+          }
+      ]
+  },
+  {
+      "name": "好康的",
+      "data": [
+          {
+              "title": "MTF WIKI",
+              "website": "https://mtf.wiki/",
+              "image": "apple-icon-144x144.png",
+              "description": "欢迎来到 MtF Wiki．我们试图整理汇总 MtF 的相关资料，为大家提供更好的帮助~"
+          }
+      ]
+  }
 ]

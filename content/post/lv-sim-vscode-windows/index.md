@@ -1,7 +1,7 @@
 ---
 title: Windows下使用VSCode搭建LVGL模拟器环境
 description: 想玩LVGL，只喜欢vscode，但是官方vscode模拟器环境只支持linux/mac，于是我把目光盯向了WSL……
-date: 2021-12-31
+date: 2021-12-28
 slug: lv-sim-vscode-windows
 image: qwq.png
 categories:

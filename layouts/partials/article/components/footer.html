@@ -8,10 +8,16 @@
     </section>
     {{ end }}
 
-    {{ if and (.Site.Params.article.edit.enabled) (not (eq .Params.edit false)) }}
+    {{ if and (.Site.Params.article.edit.enabled) (not (eq .Params.edit false)) (not (.Params.edit_url)) }}
     <section class="article-edit">
         {{ partial "helper/icon" "external-link" }}
         <span><a style="color: inherit;" href="https://github.com/moozae/moozae/edit/develop/content/{{ replace .File.Path "\\" "/" }}" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a></span>
+    </section>
+    {{ end }}
+    {{ if and (.Site.Params.article.edit.enabled) ( .Params.edit_url) }}
+    <section class="article-edit">
+        {{ partial "helper/icon" "external-link" }}
+        <span><a style="color: inherit;" href={{ .Params.edit_url }} target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a></span>
     </section>
     {{ end }}
 

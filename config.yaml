@@ -31,7 +31,7 @@ params:
 
     footer:
         since: 2021
-        customText: <img style="width:20px;height:20px;margin-bottom:-8px" src="https://icp.gov.moe/images/ico64.png"><a href="https://icp.gov.moe/?keyword=20216029" target="_blank">萌ICP备20216029号</a>
+        customText: <img style="width:20px;height:20px;margin-bottom:-8px" src="https://icp.gov.moe/images/ico64.png"><a href="https://icp.gov.moe/?keyword=20226666" target="_blank">萌ICP备20226666号</a>
 
 
 
@@ -40,7 +40,7 @@ params:
         lastUpdated: Jan 02, 2006 15:04 MST
 
     sidebar:
-        emoji: 🏳️‍🌈
+        emoji: 🏳️‍⚧️
         subtitle: 是爱吃糖糖🍥的沐子哩🏳️‍⚧️~
         avatar:
             enabled: true
@@ -58,7 +58,7 @@ params:
             enabled: true
 
     comments:
-        enabled: false
+        enabled: true
         provider: waline
 
         utterances:
@@ -81,10 +81,10 @@ params:
 
         # Waline client configuration see: https://waline.js.org/en/reference/client.html
         waline:
-            serverURL: https://hello-cloudbase-0gtp3awqccdc01a6-1252905309.ap-shanghai.app.tcloudbase.com/
+            serverURL: https://api.moozae.com/waline
             lang: zh-CN
             visitor:
-            avatar:
+            avatar: md
             emoji:
                 - https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/alus
                 - https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo

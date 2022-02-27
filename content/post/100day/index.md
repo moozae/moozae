@@ -6,7 +6,7 @@ slug: 100day
 image: School.png
 categories:
     - daily
-    ---
+---
 
     向着星辰~~与深渊，欢迎来到冒险家协会~~。
 

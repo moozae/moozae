@@ -91,9 +91,9 @@ params:
                 - https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq
                 - https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tieba
             requiredMeta:
-                - name
-                - email
-                - url
+                - nick
+                - mail
+                # - link
             placeholder:
             locale:
                 admin: 沐子哩本哩

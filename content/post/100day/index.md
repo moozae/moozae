@@ -3,7 +3,7 @@ title: 向着星辰，一路前行——高考一百天倒计时
 description: 没有感觉到呢，离高考就只剩下一百天了。
 date: 2022-02-27
 slug: 100day
-image: School.png
+image: bdibA.png
 categories:
     - daily
 ---

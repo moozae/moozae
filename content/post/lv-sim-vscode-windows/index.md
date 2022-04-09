@@ -58,9 +58,9 @@ wsl2有[wslg](https://github.com/microsoft/wslg)啊！
 
 至于wslg，可以参考[官方文档](https://github.com/microsoft/wslg)
 
-这里建议先安装下GIMP测试下，顺便利用apt安装GIMP的过程补全各种依赖
+这里建议先安装下Gedit测试下，顺便利用apt安装Gedit的过程补全各种依赖
 
-![WSLG走起！](gimp.png)
+![WSLG走起！](gedit.png)
 
 然后咱们开工！
 

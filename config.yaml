@@ -81,7 +81,7 @@ params:
 
         # Waline client configuration see: https://waline.js.org/en/reference/client.html
         waline:
-            serverURL: https://api.moozae.com/waline
+            serverURL: https://waline.moozae.com/waline
             lang: zh-CN
             visitor:
             avatar: md

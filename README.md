@@ -1,4 +1,10 @@
-# Hello,I'm Moozae！ 👋 
+<div align="center">
+ 
+![header](https://capsule-render.vercel.app/api?type=waving&height=300&section=header&text=I'm%20Moozae&fontSize=70&fontColor=ffffff)
+ 
+![GitHub WidgetBox](https://github-widgetbox.vercel.app/api/profile?username=moozae&data=followers,repositories,stars,commits)
+
+</div>
 
 ---
 
@@ -12,7 +18,7 @@
 
  - transLes一枚
  - 有一只布偶猫！
- - 正在复读备战高考
+ - 高考完正在躺平
  - 凑条数凑条数x
 
 ## Contact Me

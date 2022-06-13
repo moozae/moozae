@@ -1,6 +1,6 @@
 <div align="center">
  
-![header](https://capsule-render.vercel.app/api?type=waving&height=300&section=header&text=I'm%20Moozae&fontSize=70&fontColor=ffffff)
+![header](https://capsule-render.vercel.app/api?type=waving&height=300&section=header&text=Hi,I'm%20Moozae&fontSize=70&fontColor=ffffff)
  
 ![GitHub WidgetBox](https://github-widgetbox.vercel.app/api/profile?username=moozae&data=followers,repositories,stars,commits)
 
